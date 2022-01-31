@@ -1,6 +1,6 @@
 import './app.css'; 
 
-function App() {
+function App() {  //App컴포넌트
   return (
     <h1>Hello</h1> 
   );
