@@ -8,7 +8,7 @@ button {
   cursor: pointer;
 }
 
-/*스타일링하기*/
+/*(스타일링하기)*/
 .navbar {
   font-size: 2rem;
   padding: 1em;
@@ -38,6 +38,7 @@ button {
   padding-top: 2em;
 }
 
+/*스타일링하기*/
 .add-input {
   font-size: 2rem;
 }

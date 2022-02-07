@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Habit extends Component {  //Habit컴포넌트
 
     handleIncrement = () => {
-        this.props.onIncrement(this.props.habit); //onIncrement라는 'props'를 통해 Habits컴포넌트로부터 전달받은 'Habits컴포넌트'의 handleIncrement함수를 호출하고, props를 통해 전달받은 해당되는 habit데이터를 인자로 전달
+        this.props.onIncrement(this.props.habit); 
     }; 
 
     handleDecrement = () => {
@@ -16,7 +16,7 @@ class Habit extends Component {  //Habit컴포넌트
 
 
     render() {
-        const { name, count } = this.props.habit;  //*props 이용해 부모 컴포넌트(App컴포넌트)로부터 전달받은 데이터 사용하기
+        const { name, count } = this.props.habit;  
 
         return (
             <li className="habit"> 
