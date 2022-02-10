@@ -38,7 +38,7 @@ button {
   padding-top: 2em;
 }
 
-/*스타일링하기*/
+/*(스타일링하기)*/
 .add-input {
   font-size: 2rem;
 }
@@ -96,6 +96,7 @@ button {
   color: darkred;
 }
 
+/*스타일링하기*/
 .habits-reset {
   font-size: 1.5rem;
   padding: 0.2em 1em;

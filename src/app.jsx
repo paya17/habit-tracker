@@ -36,10 +36,19 @@ class App extends Component {  //App컴포넌트
   }; 
 
   handleAdd = name => {
-    const habit = [...this.state.habits, { id: Date.now(), name: name, count: 0 }] //새로운 habit이 추가된, '새로운 배열'을 만듦
+    const habit = [...this.state.habits, { id: Date.now(), name: name, count: 0 }] 
   
     this.setState({ habits });
-  }; //6.handleAdd함수
+  }; 
+
+  handleReset = () => {
+    const habits = this.state.habits.map(habit => {
+      habit.count = 0;
+      return habit;
+    }); //map함수를 이용해 habits배열을 빙글빙글 돌면서, (각각의 아이템인)habit의 count를 0으로 만들어 '새로운 habits 배열'을 만듦
+
+    this.setState({ habits });
+  }; //3.handleReset함수
 
 
   render() {
@@ -54,7 +63,8 @@ class App extends Component {  //App컴포넌트
           onDecrement={this.handleDecrement}
           onDelete={this.handleDelete}
           onAdd={this.handleAdd}
-        />  {/*5.*/} {/*'Habits컴포넌트'를 연결*/} {/*props 이용해서, Habits컴포넌트에서 이 데이터 사용하기*/}
+          onReset={this.handleReset}  //2.
+        />  {/*'Habits컴포넌트'를 연결*/} {/*props 이용해서, Habits컴포넌트에서 이 데이터 사용하기*/}
       </>
     );
   }
