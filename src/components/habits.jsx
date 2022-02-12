@@ -36,7 +36,7 @@ class Habits extends Component {  //Habits컴포넌트
                         />  //'Habit컴포넌트'를 연결 //props 이용해서, Habit컴포넌트에서 이 데이터 사용하기
                     ))}
                 </ul>
-                <button className="habits-reset" onClick={this.props.onReset}>Reset All</button>  {/*<reset버튼 추가하기>*/} {/*1.클릭하면('이벤트'), App컴포넌트에서 Habits컴포넌트에 있는 onReset이라는 props를 호출*/}
+                <button className="habits-reset" onClick={this.props.onReset}>Reset All</button>  {/*클릭하면('이벤트'), App컴포넌트에서 Habits컴포넌트에 있는 onReset이라는 props를 호출*/}
             </>
         );
     }

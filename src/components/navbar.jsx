@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react'; //Component→PureComponent로 바꾸기
 
-class Navbar extends Component {  //Navbar컴포넌트
+class Navbar extends PureComponent {  //Navbar컴포넌트 //Component→PureComponent로 바꾸기
     render() {
         return (
             <nav className="navbar"> {/*묶을 때, <div>말고 의미있는 태그 쓰기*/}

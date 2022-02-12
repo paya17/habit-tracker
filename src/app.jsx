@@ -13,18 +13,24 @@ class App extends Component {  //App컴포넌트
   } 
 
   handleIncrement = habit => {
-    const habits = [...this.state.habits]; 
-    const index = habits.indexOf(habit); 
-    const count = habits[index].count + 1; 
+    const habits = this.state.habits.map(item => {
+      if(item.id === habit.id) { //item의 id가 업데이트해야되는 habit의 id와 동일하다면
+        return {...habit, count: habit.count + 1}; //업데이트해야되는 habit의 count를 1 증가시킨 '새로운 habit object'를 만듦
+      } //*업데이트되야하는(+버튼을 누른) habit object만 새로운 object로 만들어서 '다른 레퍼런스'를 갖기 때문에, 그 habit만(예를 들어, Reading) render됨 (다른 habit은 render 안됨)
+      return item; //item의 id가 업데이트해야되는 habit의 id와 다르다면
+    }); //함수 바꾸기
     
     this.setState({ habits }); 
   }; 
 
   handleDecrement = habit => {
-    const habits = [...this.state.habits]; 
-    const index = habits.indexOf(habit); 
-    const count = habits[index].count - 1; 
-    habits[index].count = count < 0 ? 0 : count; 
+    const habits = this.state.habits.map(item => {
+      if(item.id === habit.id) {
+        const count =  habit.count - 1;
+        return {...habit, count: count < 0 ? 0 : count }; //count가 음수가 되지 않도록
+      } 
+      return item;
+    }); //함수 바꾸기
     
     this.setState({ habits }); 
   }; 
@@ -43,12 +49,14 @@ class App extends Component {  //App컴포넌트
 
   handleReset = () => {
     const habits = this.state.habits.map(habit => {
-      habit.count = 0;
-      return habit;
-    }); //map함수를 이용해 habits배열을 빙글빙글 돌면서, (각각의 아이템인)habit의 count를 0으로 만들어 '새로운 habits 배열'을 만듦
+      if (habit.count !== 0) { //habit의 count가 0이 아니라면
+        return {...habit, count: 0 };
+      }
+      return habit; //habit의 count가 0이라면, 기존의 habit을 return
+    }); //함수 바꾸기
 
     this.setState({ habits });
-  }; //3.handleReset함수
+  }; 
 
 
   render() {
@@ -63,7 +71,7 @@ class App extends Component {  //App컴포넌트
           onDecrement={this.handleDecrement}
           onDelete={this.handleDelete}
           onAdd={this.handleAdd}
-          onReset={this.handleReset}  //2.
+          onReset={this.handleReset}  
         />  {/*'Habits컴포넌트'를 연결*/} {/*props 이용해서, Habits컴포넌트에서 이 데이터 사용하기*/}
       </>
     );

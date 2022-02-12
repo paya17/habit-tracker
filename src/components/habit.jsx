@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react'; //Component→PureComponent로 바꾸기
 
-class Habit extends Component {  //Habit컴포넌트
+class Habit extends PureComponent {  //Habit컴포넌트 //Component→PureComponent로 바꾸기
 
     handleIncrement = () => {
         this.props.onIncrement(this.props.habit); 
