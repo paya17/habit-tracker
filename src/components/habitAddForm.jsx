@@ -1,25 +1,25 @@
-import React, { PureComponent } from 'react'; //Component→PureComponent로 바꾸기 
+import React, {memo} from 'react'; //2.memo를 import
 
-class HabitAddForm extends PureComponent {  //HabitAddForm컴포넌트 //Component→PureComponent로 바꾸기 
-    inputRef = React.createRef(); 
+const HabitAddForm = memo((props) => {  //HabitAddForm컴포넌트('function 컴포넌트') //props를 인자로 받음
+    const inputRef = React.createRef(); //const 지역변수 설정
     
-    onSubmit = event => {  
+    const onSubmit = event => {  //const 지역변수 설정
         event.preventDefault();
 
-        const name = this.inputRef.current.value; 
-        name && this.props.onAdd(name); 
+        const name = inputRef.current.value; //this 지우기
+        name && props.onAdd(name); 
         
-        this.inputRef.current.value = ''; 
+        inputRef.current.value = ''; 
     };
 
-    render() {
-        return (
-            <form className="add-form" onSubmit={this.onSubmit}> {/*제출하면('이벤트'), 현 컴포넌트의 onSubmit함수를 호출*/}
-                <input ref={this.inputRef} type="text" className="add-input" placeholder="Habit" /> 
-                <button className="add-button">Add</button>
-            </form>
-        );
-    }
-}
+
+    return (
+        <form className="add-form" onSubmit={onSubmit}> 
+            <input ref={inputRef} type="text" className="add-input" placeholder="Habit" /> 
+            <button className="add-button">Add</button>
+        </form>
+    );
+}); //{}안에 필요한 거 넣기 //2.memo안에 함수 넣기
 
 export default HabitAddForm;
+
