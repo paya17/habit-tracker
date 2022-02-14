@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom'; 
 import './index.css';
 import App from './app'; 
-import '@fortawesome/fontawesome-free/js/all.js'; //추가
+import '@fortawesome/fontawesome-free/js/all.js'; 
+import SimpleHabit from './components/simpleHabit'; //import
 
-ReactDOM.render(  //최상위 컴포넌트(App컴포넌트)를 html(root라는 id를 가진 요소)과 연결시켜준다
+ReactDOM.render(  
   <React.StrictMode> 
-    <App />  
+    <SimpleHabit />  {/*App을 SimpleHabit으로 바꿔준다*/}
   </React.StrictMode>,
   document.getElementById('root')
 );
